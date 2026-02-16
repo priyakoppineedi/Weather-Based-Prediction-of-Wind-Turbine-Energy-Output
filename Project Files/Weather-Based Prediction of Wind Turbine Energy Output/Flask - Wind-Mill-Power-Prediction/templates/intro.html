@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wind Turbine Energy Prediction</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e6f4f1, #d0e8ff);
+            color: #2c3e50;
+        }
+
+        header {
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 25px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 25px 80px;
+        }
+
+        .image-section img {
+            width: 500px;
+            filter: drop-shadow(5px 10px 15px rgba(0,0,0,0.2));
+        }
+
+        .content-section {
+            width: 52%;
+            background: rgba(255, 255, 255, 0.6);
+            padding-top: 25x;
+            padding-bottom: 25px;
+            padding-left: 30px;
+            padding-right: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .content-section h2 {
+            font-size: 26px;
+            color: #1b4f72;
+        }
+
+        .content-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: #117864;
+        }
+
+        .features {
+            margin-top: 15px;
+        }
+
+        .features span {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: linear-gradient(to right, #1abc9c, #16a085);
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 30px;
+            margin-top: 20px;
+            transition: 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 14px;
+            background-color: #0f2027;
+            color: white;
+            font-size: 14px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .content-section {
+                width: 90%;
+                margin-top: 30px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    Weather-Based Prediction of Wind Turbine Energy Output
+</header>
+
+<div class="container">
+
+    <div class="image-section">
+        <img src="https://static.vecteezy.com/system/resources/previews/062/112/804/non_2x/wind-turbines-and-solar-panel-renewable-energy-landscape-with-green-hills-and-trees-illustration-vector.jpg" alt="Wind Turbine" style="border-radius: 15px;">
+    </div>
+
+    <div class="content-section">
+        <h2>Smart Renewable Energy Forecasting Platform</h2>
+        <p>
+            Renewable energy, including wind and solar, is increasingly important for meeting global energy demand, as traditional sources like coal, oil, and nuclear power are unsafe and emit large amounts of CO₂. Wind energy, in particular, has grown rapidly; in Europe, its production capacity doubled between 2009 and 2010, improving <span class="highlight">grid stability, operational efficiency, and maintenance planning</span>.
+        </p>
+
+        <p>
+            Wind energy production is hard to predict due to variable weather, especially wind speed, which directly affects output. Accurate forecasting helps energy suppliers coordinate with traditional power plants and avoid overproduction. Turbine performance can be estimated using wind speed and the turbine power curve.
+        </p>
+
+        <p>
+            This project uses <span class="highlight">Machine Learning (Random Forest Regression)</span> to analyze weather parameters—wind speed, temperature, atmospheric pressure, and humidity—to forecast turbine performance. The system integrates real-time weather APIs and offers a responsive web interface built with Flask.
+        </p>
+
+        
+
+        <a href="/predict" class="btn">Launch Prediction System</a>
+
+    </div>
+
+</div>
+
+<footer>
+    Internship Project | Wind Energy Forecasting System | Flask • Machine Learning • Data Science
+</footer>
+
+</body>
+</html>

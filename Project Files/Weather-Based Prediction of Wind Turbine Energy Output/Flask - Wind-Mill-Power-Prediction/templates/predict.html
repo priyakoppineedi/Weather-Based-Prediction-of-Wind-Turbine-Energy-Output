@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wind Energy Prediction Dashboard</title>
+
+    <style>
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #e6f4f1, #d0e8ff);
+        color: #2c3e50;
+    }
+
+    header {
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 600;
+    }
+    a {
+        color: white;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        padding: 50px;
+        flex-wrap: wrap;
+        flex: 1;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.85);
+        padding: 30px;
+        width: 380px;
+        border-radius: 12px;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: #1b4f72;
+    }
+
+    input[type=text],
+    input[type=number] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 12px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(to right, #1abc9c, #16a085);
+        color: white;
+        border: none;
+        font-size: 15px;
+        font-weight: 600;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    input[type=submit]:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    .weather-data p {
+        margin: 6px 0;
+        font-size: 14px;
+    }
+
+    .prediction-result {
+        margin-top: 15px;
+        padding: 12px;
+        background-color: #e8f8f5;
+        border-left: 4px solid #16a085;
+        border-radius: 6px;
+        font-weight: 600;
+        color: #117864;
+    }
+
+    .back-link {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .back-link a {
+        text-decoration: none;
+        color: #1b4f72;
+        font-weight: 600;
+    }
+
+    footer {
+        text-align: center;
+        padding: 15px;
+        background-color: #0f2027;
+        color: white;
+        font-size: 14px;
+        margin-top: auto;
+    }
+
+    .note {
+        font-size: 12px;
+        color: #555;
+        margin-top: 5px;
+    }
+    </style>
+ 
+</head>
+
+<body>
+
+<header>
+    <a href="/">Wind Turbine Energy Prediction Dashboard</a>
+</header>
+
+
+
+<div class="container">
+
+    <!-- Weather API Section -->
+    <div class="card">
+        <h3>🌦 Real-Time Weather Data</h3>
+
+        <form action="/windapi" method="post">
+            <input type="text" name="city" placeholder="Enter City Name">
+            <input type="submit" value="Fetch Weather Data">
+        </form>
+
+        {% if temp %}
+        <div class="weather-data">
+            <p><strong>Temperature:</strong> {{ temp }}</p>
+            <p><strong>Humidity:</strong> {{ humid }}</p>
+            <p><strong>Pressure:</strong> {{ pressure }}</p>
+            <p><strong>Wind Speed:</strong> {{ speed }}</p>
+            <p class="note">*Wind speed is auto-filled into the prediction form but editable*</p>
+        </div>
+        {% endif %}
+    </div>
+
+
+    <!-- Prediction Section -->
+    <div class="card">
+        <h3>⚡ Predict Energy Output</h3>
+
+        <form action="/y_predict" method="post">
+            <input type="number" step="any" name="theoretical_power"
+                placeholder="Theoretical Power Curve (KWh)"
+                value="{{ theoretical_power if theoretical_power is defined else '' }}" required>
+
+            <input type="number" step="any" name="wind_speed"
+                placeholder="Wind Speed (m/s)"
+                value="{{ wind_speed_value if wind_speed_value is defined else '' }}" required>
+
+            <input type="submit" value="Predict Energy Output">
+        </form>
+
+        {% if prediction_text %}
+        <div class="prediction-result">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+
+
+
+<footer>
+    Internship Project | Wind Energy Forecasting System | Flask • Machine Learning
+</footer>
+
+</body>
+</html>
